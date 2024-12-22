@@ -1,0 +1,136 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Мясо",
+        "description": ""
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Молочное",
+        "description": ""
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name": "остальное",
+        "description": ""
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+        "name": "Электроника",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+        "name": "Продукты питания",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+        "name": "Книги",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+        "name": "Продукты питания",
+        "description": null
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Колбаса",
+        "description": "ООО Вкусно",
+        "image": "",
+        "price": 100,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 1
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Сосиски",
+        "description": "Тюменские колбасы",
+        "image": "",
+        "price": 12,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 1
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "кефир",
+        "description": "23у23в2",
+        "image": "",
+        "price": 1,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 2
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "карандаши",
+        "description": "",
+        "image": "",
+        "price": 323,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 3
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "Смартфон",
+        "description": "Современный смартфон с большим экраном.",
+        "image": "",
+        "price": 600,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 7
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Молоко",
+        "description": "Свежее пастеризованное молоко.",
+        "image": "",
+        "price": 50,
+        "created_at": "2024-12-22",
+        "updated_at": "2024-12-22",
+        "category": 5
+    }
+}
+]
