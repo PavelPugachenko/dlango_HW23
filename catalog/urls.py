@@ -1,14 +1,13 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
+from catalog.apps import CatalogConfig
+from catalog.views import home, contacts, product_detail, product_list
+
+app_name = CatalogConfig.name
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('contacts/', views.contacts, name='contacts'),
-    path('<int:product_id>/', views.product_details, name='product_details'),
+    path('home/', home, name='home'),
+    path('contacts/', contacts, name='contacts'),
+    path('', product_list, name='products_list'),
+    path('product_detail/<int:pk>/', product_detail, name='product_detail'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
