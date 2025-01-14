@@ -1,29 +1,42 @@
-from django.shortcuts import redirect
-from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-from .models import BlogPost
+from django.urls import reverse_lazy, reverse
+from .models import Blog
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CreateBlogPostView(CreateView):
-    model = BlogPost
-    fields = ['title', 'content', 'preview_image']
-    success_url = reverse_lazy('blog:list')
+class BlogListView(ListView):
+    model = Blog
 
-class ListBlogPostView(ListView):
-    model = BlogPost
-    template_name = 'blog/post_list.html'
+    def get_queryset(self):
+        # Получаем только активные объекты
+        return Blog.objects.filter(publication=True)
 
-class DetailBlogPostView(DetailView):
-    model = BlogPost
-    template_name = 'blog/post_detail.html'
 
-class UpdateBlogPostView(UpdateView):
-    model = BlogPost
-    fields = ['title', 'content', 'preview_image']
-    template_name_suffix = '_update'
-    success_url = reverse_lazy('blog:list')
+class BlogCreateView(LoginRequiredMixin, CreateView):
+    model = Blog
+    fields = ("title", "content", "image", )
+    success_url = reverse_lazy("blog:blog_list")
 
-class DeleteBlogPostView(DeleteView):
-    model = BlogPost
-    template_name_suffix = '_confirm_delete.html'
-    success_url = reverse_lazy('blog:list')
+
+class BlogUpdateView(LoginRequiredMixin, UpdateView):
+    model = Blog
+    fields = ("title", "content", "image")
+    success_url = reverse_lazy("blog:blog_list")
+
+    def get_success_url(self):
+        return reverse('blog:blog_detail', args=[self.kwargs.get('pk')])
+
+
+class BlogDetailView(DetailView):
+    model = Blog
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.number_views += 1
+        self.object.save()
+        return self.object
+
+
+class BlogDeleteView(LoginRequiredMixin, DeleteView):
+    model = Blog
+    success_url = reverse_lazy("blog:blog_list")

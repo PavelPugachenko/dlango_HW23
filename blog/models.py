@@ -1,19 +1,18 @@
 from django.db import models
-from django.utils import timezone
 
 
-class BlogPost(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
-    preview_image = models.ImageField(upload_to='blog_previews', blank=True, null=True)
-    created_date = models.DateTimeField(default=timezone.now)
-    published = models.BooleanField(default=False)
-    view_count = models.IntegerField(default=0)
+class Blog(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Заголовок')
+    content = models.TextField(verbose_name='Содержимое')
+    image = models.ImageField(upload_to='blog/image', blank=True, null=True, verbose_name='Изображение')
+    created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания')
+    publication = models.BooleanField(default=True, verbose_name='публикация')
+    number_views = models.PositiveIntegerField(verbose_name="Количество просмотров",
+                                               help_text="Укажите количество просмотров", default=0)
 
     def __str__(self):
         return self.title
 
-
-from django.db import models
-
-# Create your models here.
+    class Meta:
+        verbose_name = 'блог'
+        verbose_name_plural = 'блоги'

@@ -4,7 +4,7 @@ from catalog.models import Product
 
 
 class HomeView(TemplateView):
-    template_name = 'catalog/home.html'
+    template_name = 'catalog/blog_list.html'
 
 
 class ContactsView(TemplateView):
