@@ -1,53 +1,58 @@
-
-<!doctype html>
-<html lang="ru">
+ <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Магазин</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}<Блог>{% endblock %}</title>
+    <!-- Подключение Bootstrap CSS -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-
 </head>
 <body>
-{% include 'catalog/includes/inc_menu.html' %}
-<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Блог</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Посты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Редактировать пост</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Добавить Пост</a>
+                </li>
 
-</div>
-{% block content %}
-{% endblock %}
-<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-            <div class="col-12 col-md">
-                PashkaYo
-                <small class="d-block mb-3 text-muted">&copy; 2024</small>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Категории</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Посылки</a></li>
-                    <li><a class="text-muted" href="#">Блог</a></li>
-                    <li><a class="text-muted" href="#">Магазин</a></li>
-                    <li><a class="text-muted" href="#">Шиномонтаж</a></li>
-                    <li><a class="text-muted" href="#">Микрозаймы</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Дополнительно</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Я друг</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>О нас</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="/contacts/">Контакты</a></li>
-                </ul>
-            </div>
+                {% if user.is_authenticated %}
+                     <li class="nav-item">
+                          <form method="post" action="{% url 'users:logout' %}" style="display:inline">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-link nav-link ">Выйти</button>
+
+                          </form>
+                </li>
+
+                {% else %}
+                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">Войти</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:register' %}">Регистрация</a>
+
+                {% endif %}
+            </ul>
         </div>
-    </footer>
-</div>
-<script src="/static/js/bootstrap.bundle.min.js"></script>
+    </nav>
+    <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Подключение Bootstrap JS -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

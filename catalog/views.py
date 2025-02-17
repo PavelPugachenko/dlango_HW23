@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from catalog.forms import ProductForm
 from catalog.models import Product
 
@@ -34,7 +34,7 @@ class ProductDetailView(TemplateView):
         context['product'] = product
         return context
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin,CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'

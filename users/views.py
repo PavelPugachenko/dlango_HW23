@@ -7,7 +7,7 @@ from .forms import CustomUserCreationForm
 class RegisterView(CreateView):
     template_name = 'users/register.html'
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('library:books_list')
+    success_url = reverse_lazy('blog:blog_list')
 
     def form_valid(self, form):
         user = form.save()
@@ -17,8 +17,8 @@ class RegisterView(CreateView):
 
     def send_welcome_email(self, user_email):
         subject = 'Добро пожаловать в наш сервис'
-        message = 'Спасибо, что зарегистрировались в нашем сервисе!'
-        from_email = 'your_email@yandex.ru'
+        message = 'Спасибо, что зарегистрировались в нашем магазине!'
+        from_email = 'pasha.pugachenko@yandex.ru'
         recipient_list = [user_email]
         send_mail(subject, message, from_email, recipient_list)
 
