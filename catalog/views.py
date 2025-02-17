@@ -1,11 +1,13 @@
+from itertools import product
+
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from catalog.forms import ProductForm
 from catalog.models import Product
 
-
+''
 class HomeView(TemplateView):
     template_name = 'catalog/products_list.html'
 
@@ -39,3 +41,4 @@ class ProductCreateView(LoginRequiredMixin,CreateView):
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('catalog:home')
+

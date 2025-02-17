@@ -131,6 +131,6 @@ EMAIL_HOST_USER = 'pasha.pugachenko@yandex.ru'
 EMAIL_HOST_PASSWORD = 'bhvsjiwypqkzfrso'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-LOGIN_REDIRECT_URL = 'catalog:products'
+LOGIN_REDIRECT_URL = 'blog:blog_list'
 
-LOGOUT_REDIRECT_URL = 'catalog:products'
+LOGOUT_REDIRECT_URL = 'blog:blog_list'
