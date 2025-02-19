@@ -32,7 +32,7 @@ class Product(models.Model):
     created_at = models.DateField(verbose_name="Дата создания", blank=True, null=True)
     updated_at = models.DateField(verbose_name="Дата последнего изменения", blank=True, null=True)
     is_published = models.BooleanField(default=False)
-    owner = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
+    owner = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
