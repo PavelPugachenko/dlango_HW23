@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -30,6 +31,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Введите цену за покупку")
     created_at = models.DateField(verbose_name="Дата создания", blank=True, null=True)
     updated_at = models.DateField(verbose_name="Дата последнего изменения", blank=True, null=True)
+    is_published = models.BooleanField(default=False)
+    owner = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -38,3 +41,6 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["category", "name", "price"]
+        permissions = (
+            ("can_unpublish_product", "Can unpublish product"),
+        )
