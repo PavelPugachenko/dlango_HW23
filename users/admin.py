@@ -1,3 +1,7 @@
+from users.models import CustomUser
 from django.contrib import admin
 
-# Register your models here.
+
+@admin.register(CustomUser)
+class CategoryAdmin(admin.ModelAdmin):
+    exclude = ['password']
