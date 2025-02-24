@@ -5,6 +5,10 @@ from django.core.exceptions import ValidationError
 forbidden = ['казино', 'криптовалюта', 'крипта', 'биржа',
              'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['is_published']
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -56,3 +60,5 @@ class StyleFormMixin:
                 field.widget.attrs['class'] = 'form-check-input'
             else:
                 field.widget.attrs['class'] = 'form-control'
+
+

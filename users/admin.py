@@ -4,4 +4,4 @@ from django.contrib import admin
 
 @admin.register(CustomUser)
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ['password']
+    exclude = ['last_name', 'password']
