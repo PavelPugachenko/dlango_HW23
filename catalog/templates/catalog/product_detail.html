@@ -11,7 +11,7 @@
       <div class="card shadow-sm">
         <img src="{{ product.image | filter_media }}">
         <div class="card-body">
-          {% if product.published_status %}
+          {% if product.is_published %}
               <p>Товар в наличии</p>
           {% else %}
               <p>Товар временно отсутствует</p>

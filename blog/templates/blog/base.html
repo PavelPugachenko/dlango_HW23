@@ -19,13 +19,11 @@
                     <a class="nav-link" href="{% url 'catalog:products_list' %}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Посты</a>
+                    <a class="nav-link" href="{% url 'blog:blog_list' %}">Посты</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Редактировать пост</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Добавить Пост</a>
+                    <a class="nav-link" href="{% url 'blog:blog_create' %}">Добавить Пост</a>
                 </li>
 
 

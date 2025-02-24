@@ -31,7 +31,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Введите цену за покупку")
     created_at = models.DateField(verbose_name="Дата создания", blank=True, null=True)
     updated_at = models.DateField(verbose_name="Дата последнего изменения", blank=True, null=True)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=True, help_text="товар в наличии")
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
