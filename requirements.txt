@@ -13,7 +13,9 @@ prompt_toolkit==3.0.48
 psycopg2-binary==2.9.10
 ptyprocess==0.7.0
 pure_eval==0.2.3
-Pygments==2.18.0
+Pygments==2.19.1
+redis==5.2.1
+self==2020.12.3
 sqlparse==0.5.3
 stack-data==0.6.3
 traitlets==5.14.3

@@ -2,8 +2,8 @@
 {% extends 'blog/base.html' %}
 {% load my_tags %}
 {% block content %}
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Категории</h1>
+<div class="pricing-header px-1 py-1 pt-md-1 pb-md-1 mx-auto text-center">
+    <h1 class="display-4" style="font-size: 4rem;">Пост</h1>
 </div>
 
 <div class="container">
@@ -14,9 +14,9 @@
                     <h4 class="my-0 font-weight-normal">{{ object.title}}</h4>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title pricing-card-title">{{ object.content}}</h2>
-                    <ul class="list-unstyled mt-3 mb-4 text-start m-3"></ul>
-                     <img class="img-responsive" width="300" src="{{ blog.image | filter_media  }}">
+                    <h2 class="card-title pricing-card-title" style="font-size: 0.8rem;" >{{ object.content}}</h2>
+                    <ul class="list-unstyled mt-5 mb-7 text-start m-3"></ul>
+                     <img class="img-responsive" width="200" src="{{ blog.image | filter_media  }}">
                     <div class="btn-group">
                         <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Назад</a>
                     </div>

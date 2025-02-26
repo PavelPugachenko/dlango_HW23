@@ -14,17 +14,17 @@
                     <h4 class="my-0 font-weight-normal">{{ blog.title}}</h4>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title pricing-card-title">Описание</h2>
+                    <h2 class="card-title pricing-card-title" style="font-size: 1rem;">Описание</h2>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li class="text-center">{{ blog.content|truncatechars:100}}</li>
                     </ul>
-                   <img class="img-responsive" width="300" src="{{ blog.image | filter_media  }}">
+                   <img class="img-responsive" width="200" src="{{ blog.image | filter_media  }}">
                     <div class="btn-group">
                         <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog.pk %}" role="button">Перейти</a>
                         <a class="btn btn-primary" href="{% url 'blog:blog_update' blog.pk %}" role="button">Редактировать</a>
-                        <a class="btn btn-danger" href="{% url 'blog:blog_delete' blog.pk %}" role="button">Удалить</a>
+                        <a class="btn btn-danger" href="{% url 'blog:blog_delete' blog.pk %}" role="button" >Удалить</a>
                     </div>
-                    <h4 class="card-title pricing-card-title">Количество просмотров: {{ blog.number_views }}</h4>
+                    <h4 class="card-title pricing-card-title" style="font-size: 0.8rem;">Количество просмотров: {{ blog.number_views }}</h4>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
 </div>
 <div class="row text-center">
     <div class="col-12 ">
-                <a class="btn btn-primary" href="{% url 'blog:blog_create' %}" role="button">Создать новый блог</a>
+                <a class="btn btn-primary" href="{% url 'blog:blog_create' %}" role="button" style="font-size: 2rem;">Создать новый блог</a>
     </div>
 </div>
 {% endblock %}
