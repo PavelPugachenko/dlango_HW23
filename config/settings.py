@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from redis.commands.graph.query_result import CACHED_EXECUTION
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,9 +137,11 @@ LOGIN_REDIRECT_URL = 'blog:blog_list'
 
 LOGOUT_REDIRECT_URL = 'blog:blog_list'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379/1',
+        }
     }
-}

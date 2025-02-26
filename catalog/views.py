@@ -7,7 +7,20 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, CreateView, DeleteView, ListView, DetailView, UpdateView
 from catalog.forms import ProductForm, ProductModeratorForm
-from catalog.models import Product
+from catalog.models import Product, Category
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.core.cache import cache
+
+from catalog.services import get_products_by_category
+
+
+class ProductsByCategoryView(ListView):
+    model = Category
+    def get_queryset(self):
+        category_id = self.kwargs.get('pk')
+        return get_products_by_category(category_id=category_id)
+
 
 
 
@@ -28,7 +41,14 @@ class ProductsListView(TemplateView):
         context['products'] = products
         return context
 
+    def get_get_queryset(self):
+        queryset = cache.get('products_queryset')
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set('products_queryset', queryset, 60 * 15)
+        return queryset
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/product_detail.html'
