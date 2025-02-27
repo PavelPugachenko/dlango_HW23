@@ -17,6 +17,8 @@ from catalog.services import get_products_by_category
 
 class ProductsByCategoryView(ListView):
     model = Category
+    template_name = 'catalog/product_list.html'
+
     def get_queryset(self):
         category_id = self.kwargs.get('pk')
         return get_products_by_category(category_id=category_id)
